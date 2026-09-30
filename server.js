@@ -7,7 +7,8 @@ const { spawn } = require('node:child_process');
 const { randomUUID, randomBytes, timingSafeEqual } = require('node:crypto');
 
 const ROOT = __dirname;
-const PORT = Number(process.env.PORT) || 3000;
+let PORT = process.env.PORT === undefined ? 3000 : Number(process.env.PORT);
+if (!Number.isInteger(PORT) || PORT < 0 || PORT > 65535) PORT = 3000;
 let previousCpu = null;
 const terminalSessions = new Map();
 const authSessions = new Map();
@@ -437,4 +438,7 @@ server.on('error', error => {
   else console.error(`Machine Monitor could not start: ${error.message}`);
   process.exitCode = 1;
 });
-server.listen(PORT, '127.0.0.1', () => console.log(`Machine Monitor running at http://localhost:${PORT}`));
+server.listen(PORT, '127.0.0.1', () => {
+  PORT = server.address().port;
+  console.log(`Machine Monitor running at http://127.0.0.1:${PORT}`);
+});
