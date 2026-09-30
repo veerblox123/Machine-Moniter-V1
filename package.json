@@ -4,6 +4,7 @@
   "private": true,
   "description": "A local, self-hosted machine monitoring dashboard",
   "main": "desktop.js",
+  "desktopName": "Machine Monitor",
   "scripts": {
     "start": "node server.js",
     "desktop": "electron .",
@@ -27,7 +28,6 @@
     "linux": {
       "category": "System",
       "maintainer": "Machine Monitor Maintainers <veerblox123@users.noreply.github.com>",
-      "desktopName": "Machine Monitor",
       "syncDesktopName": true,
       "target": ["AppImage", "deb"]
     }
