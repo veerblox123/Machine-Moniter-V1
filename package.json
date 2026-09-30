@@ -1,0 +1,8 @@
+{
+  "name": "machine-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local, self-hosted machine monitoring dashboard",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
