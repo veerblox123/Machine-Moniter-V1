@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d12"><title>Machine Monitor — Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark"><i></i><i></i><i></i></span><span>MONITOR<span class="brand-light">.LOCAL</span></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav">
+        <button class="nav-item active" data-page="overview"><span class="nav-icon">◫</span> Overview</button>
+        <div class="nav-section-label">MONITOR</div>
+        <button class="nav-item" data-page="processes"><span class="nav-icon">≋</span> Processes</button>
+        <button class="nav-item" data-page="services"><span class="nav-icon">◉</span> Services</button>
+        <button class="nav-item" data-page="logs"><span class="nav-icon">▤</span> Logs</button>
+        <button class="nav-item" data-page="storage"><span class="nav-icon">▣</span> Storage</button>
+        <button class="nav-item" data-page="network"><span class="nav-icon">⌁</span> Networking</button>
+        <div class="nav-section-label">ADMINISTRATION</div>
+        <button class="nav-item" data-page="updates"><span class="nav-icon">⇧</span> Software updates</button>
+        <button class="nav-item" data-page="packages"><span class="nav-icon">▦</span> Installed packages</button>
+        <button class="nav-item" data-page="accounts"><span class="nav-icon">♙</span> Accounts</button>
+        <button class="nav-item" data-page="firewall"><span class="nav-icon">⬡</span> Firewall</button>
+        <button class="nav-item" data-page="containers"><span class="nav-icon">▧</span> Containers</button>
+        <button class="nav-item" data-page="virtual-machines"><span class="nav-icon">▱</span> Virtual machines</button>
+        <div class="nav-section-label">TOOLS</div>
+        <button class="nav-item" data-page="terminal"><span class="nav-icon">›_</span> Terminal</button>
+        <button class="nav-item" data-page="ssh"><span class="nav-icon">⇄</span> SSH</button>
+        <button class="nav-item" data-page="tmate"><span class="nav-icon">◉</span> tmate sharing</button>
+        <button class="nav-item" data-page="sshx"><span class="nav-icon">↗</span> sshx sharing</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="host-mini"><span class="host-mini-icon">⌘</span><span><b id="side-host">Connecting…</b><small id="side-os">Local machine</small></span><span class="online-dot"></span></div><div class="privacy-note"><span>◉</span> Local only. Your data stays on this machine.</div><div class="side-footer">MONITOR LOCAL <span>v1.0.0</span></div></div>
+    </aside>
+    <main class="main" id="overview">
+      <header class="topbar"><div class="breadcrumbs">Workspace <span>/</span> <b>Overview</b></div><div class="top-actions"><span class="refresh-label"><i class="live-dot"></i> LIVE <span id="updated-at">Waiting for data</span></span><button class="icon-button" id="refresh" aria-label="Refresh data" title="Refresh now">↻</button><button class="logout-button" id="logout" type="button">Lock dashboard</button><div class="avatar">M</div></div></header>
+      <section class="module-view" id="module-view" hidden><div class="module-heading"><div><div class="eyebrow" id="module-eyebrow">SYSTEM</div><h1 id="module-title">Processes</h1><p id="module-description"></p></div><div class="module-actions"><label class="module-search"><span>⌕</span><input id="module-search" type="search" placeholder="Filter results"></label><button class="refresh-module" id="module-refresh" type="button">↻ Refresh</button></div></div><div id="module-notice" class="module-notice" hidden></div><div id="module-summary" class="module-summary"></div><div id="module-content" class="module-content"></div></section>
+      <div class="content" id="dashboard-view">
+        <section class="page-heading"><div><div class="eyebrow">LIVE SYSTEM COCKPIT</div><h1>Machine <span>overview.</span></h1><p>Live telemetry, resource load, and running processes.</p></div><div class="heading-host"><span class="host-glyph">⌘</span><span><b id="hostname">Connecting to host…</b><small id="host-detail">Detecting system details</small></span><span class="status-pill"><i></i> ONLINE</span></div></section>
+        <div id="error-banner" class="error-banner" hidden>Can’t reach the local monitor service. Start it with <code>npm start</code>, then refresh this page.</div>
+        <section class="metric-grid" aria-label="System resources">
+          <article class="metric-card"><div class="card-top"><span class="metric-name"><span class="metric-icon cpu-icon">⌁</span> CPU</span><span class="card-kebab">···</span></div><div class="metric-number"><strong id="cpu-value">—</strong><span>%</span><span class="metric-tag" id="cpu-state">WAITING</span></div><div class="meter"><div id="cpu-meter" class="meter-fill cpu-fill"></div></div><div class="metric-foot"><span id="cpu-model">Processor</span><span id="cpu-cores">— cores</span></div><div class="sparkline" id="cpu-spark"></div></article>
+          <article class="metric-card"><div class="card-top"><span class="metric-name"><span class="metric-icon mem-icon">▤</span> Memory</span><span class="card-kebab">···</span></div><div class="metric-number"><strong id="mem-value">—</strong><span>%</span><span class="metric-tag" id="mem-state">WAITING</span></div><div class="meter"><div id="mem-meter" class="meter-fill mem-fill"></div></div><div class="metric-foot"><span id="mem-used">— used</span><span id="mem-total">— total</span></div><div class="sparkline" id="mem-spark"></div></article>
+          <article class="metric-card"><div class="card-top"><span class="metric-name"><span class="metric-icon disk-icon">▣</span> Disk usage</span><span class="card-kebab">···</span></div><div class="metric-number"><strong id="disk-value">—</strong><span>%</span><span class="metric-tag" id="disk-state">WAITING</span></div><div class="meter"><div id="disk-meter" class="meter-fill disk-fill"></div></div><div class="metric-foot"><span id="disk-used">— used</span><span id="disk-total">Root volume</span></div><div class="sparkline" id="disk-spark"></div></article>
+          <article class="metric-card temp-card"><div class="card-top"><span class="metric-name"><span class="metric-icon temp-icon">♨</span> CPU temperature</span><span class="card-kebab">···</span></div><div class="temp-reading"><strong id="temp-value">—</strong><span>°C</span></div><div class="temp-status"><span class="temp-orb"></span><span id="temp-label">Sensor data unavailable</span></div><div class="temp-visual"><div class="temp-bar"><span id="temp-bar"></span></div><div class="temp-scale"><span>COOL</span><span>WARM</span><span>HOT</span></div></div><div class="metric-foot"><span>Thermal sensor</span><span id="temp-source">System</span></div></article>
+        </section>
+        <section class="lower-grid" id="processes">
+          <article class="panel process-panel"><div class="panel-heading"><div><div class="eyebrow">WHAT’S RUNNING</div><h2>Top processes</h2></div><span class="process-count" id="process-count">LIVE</span></div><div class="table-wrap"><table><thead><tr><th>PROCESS</th><th>PID</th><th>CPU</th><th>MEMORY</th><th>STATUS</th></tr></thead><tbody id="process-rows"><tr><td colspan="5" class="empty-state">Waiting for process data…</td></tr></tbody></table></div><div class="panel-bottom"><span>Sorted by CPU usage</span><span>Refreshes every 3 seconds <i class="tiny-live"></i></span></div></article>
+          <article class="panel details-panel" id="hardware"><div class="panel-heading"><div><div class="eyebrow">YOUR MACHINE</div><h2>System details</h2></div><span class="details-icon">⌘</span></div><div class="detail-list"><div class="detail-row"><span class="detail-icon">▧</span><span class="detail-label">Operating system</span><b id="detail-os">—</b></div><div class="detail-row"><span class="detail-icon">⌘</span><span class="detail-label">Processor</span><b id="detail-cpu">—</b></div><div class="detail-row"><span class="detail-icon">▤</span><span class="detail-label">Architecture</span><b id="detail-arch">—</b></div><div class="detail-row"><span class="detail-icon">◷</span><span class="detail-label">Uptime</span><b id="detail-uptime">—</b></div><div class="detail-row"><span class="detail-icon">⌁</span><span class="detail-label">Network addresses</span><b id="detail-network">—</b></div></div><div class="local-badge"><span>◉</span><div><b>Private by design</b><small>Metrics are collected locally and never leave this machine.</small></div></div></article>
+        </section>
+        <footer class="page-footer"><span><i class="tiny-live"></i> All systems operational</span><span>Data collected locally <span class="footer-sep">·</span> Auto-refresh every 3s</span></footer>
+      </div>
+      <section class="terminal-view" id="terminal-view" hidden>
+        <div class="terminal-heading"><div><div class="eyebrow">LOCAL SHELL</div><h1>Machine terminal</h1><p>Run commands on this machine from your browser.</p></div><button class="back-button" id="terminal-close" type="button">← Back to overview</button></div>
+        <div class="terminal-security"><span>◉</span> Local access only <i></i> Commands run as your current user <i></i> Session closes when you leave
+        </div>
+        <div class="terminal-window"><div class="terminal-titlebar"><div class="window-controls"><i></i><i></i><i></i></div><span id="terminal-title">Terminal — starting…</span><button id="terminal-clear" type="button" title="Clear terminal">Clear</button></div><div class="terminal-output" id="terminal-output" role="log" aria-live="polite"></div><form class="terminal-form" id="terminal-form"><span class="terminal-prompt">›</span><input id="terminal-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command" placeholder="Type a command and press Enter" disabled><span class="terminal-cursor"></span></form></div>
+        <div class="terminal-hint">TIP <span>Try</span> <code>help</code><span>,</span> <code>ls</code><span> or</span> <code>pwd</code></div>
+      </section>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
