@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "desktop": "electron .",
-    "dist:linux": "electron-builder --linux AppImage deb"
+    "dist:linux": "electron-builder --linux AppImage deb --publish never"
   },
   "engines": { "node": ">=18" },
   "devDependencies": {
@@ -26,6 +26,9 @@
     "directories": { "output": "dist" },
     "linux": {
       "category": "System",
+      "maintainer": "Machine Monitor Maintainers <veerblox123@users.noreply.github.com>",
+      "desktopName": "Machine Monitor",
+      "syncDesktopName": true,
       "target": ["AppImage", "deb"]
     }
   }
