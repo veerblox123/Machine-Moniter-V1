@@ -3,6 +3,30 @@
   "version": "1.0.0",
   "private": true,
   "description": "A local, self-hosted machine monitoring dashboard",
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=18" }
+  "main": "desktop.js",
+  "scripts": {
+    "start": "node server.js",
+    "desktop": "electron .",
+    "dist:linux": "electron-builder --linux AppImage deb"
+  },
+  "engines": { "node": ">=18" },
+  "devDependencies": {
+    "electron": "43.7.6",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "local.monitor.machine",
+    "productName": "Machine Monitor",
+    "artifactName": "${productName}-${version}-${arch}.${ext}",
+    "files": ["desktop.js", "package.json"],
+    "extraResources": [
+      { "from": "server.js", "to": "server.js" },
+      { "from": "public", "to": "public" }
+    ],
+    "directories": { "output": "dist" },
+    "linux": {
+      "category": "System",
+      "target": ["AppImage", "deb"]
+    }
+  }
 }
