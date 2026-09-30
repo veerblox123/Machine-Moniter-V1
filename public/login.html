@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d12"><title>Sign in — Machine Monitor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="login-page">
+  <main class="login-shell">
+    <section class="login-card" aria-labelledby="login-title">
+      <a class="brand login-brand" href="/" aria-label="Machine Monitor"><span class="brand-mark"><i></i><i></i><i></i></span><span>MONITOR<span class="brand-light">.LOCAL</span></span></a>
+      <div class="login-orb" aria-hidden="true"><span class="login-orb-core"></span><i></i><i></i><i></i></div>
+      <div class="eyebrow login-eyebrow">LOCAL MACHINE ACCESS</div>
+      <h1 id="login-title">Welcome back.</h1>
+      <p class="login-subtitle">Confirm your laptop password to open your system dashboard.</p>
+      <form id="login-form" class="login-form">
+        <label for="login-user">LAPTOP ACCOUNT</label>
+        <div class="login-account"><span class="login-avatar">⌘</span><b id="login-username">Current system user</b><span class="account-dot"></span></div>
+        <label for="login-password">PASSWORD</label>
+        <div class="password-field"><input id="login-password" type="password" name="password" autocomplete="current-password" required autofocus placeholder="Enter your laptop password"><button id="password-toggle" type="button" aria-label="Show password">Show</button></div>
+        <p id="login-error" class="login-error" role="alert" hidden></p>
+        <button class="primary-action login-submit" type="submit"><span>Unlock dashboard</span><b>→</b></button>
+      </form>
+      <div class="login-privacy"><span>◉</span><div><b>Verified on this machine</b><small>Your password is checked locally and never stored.</small></div></div>
+      <div class="login-footer"><span><i class="tiny-live"></i> LOCAL SESSION</span><span>MONITOR LOCAL · v1.0.0</span></div>
+    </section>
+    <aside class="login-aside"><div class="eyebrow">YOUR MACHINE, AT A GLANCE</div><h2>Every signal.<br><span>One cockpit.</span></h2><p>CPU, memory, disks, services, processes, and more — collected right here on your device.</p><div class="login-stats"><div><span>01</span><b>Private by design</b><small>Metrics stay on this machine</small></div><div><span>02</span><b>Live system view</b><small>Updates every few seconds</small></div></div></aside>
+  </main>
+  <script src="/login.js"></script>
+</body>
+</html>
